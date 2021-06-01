@@ -1,0 +1,15 @@
+services:
+        systembase:
+                image: ubuntu:20.04
+                restart: always
+                volumes:
+                        - "/bin/bash:/bin/bash" 
+        webserver:
+                depends_on:
+                        - systembase
+                container_name: lab14
+                network_mode: host
+                volumes:
+                        - "./lab7:/home"
+                build: .
+                restart: always
